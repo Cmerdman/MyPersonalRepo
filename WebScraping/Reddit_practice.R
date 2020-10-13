@@ -57,7 +57,3 @@ redditFrame = data.frame(Title = name,                      #data frame to hold 
                          stringsAsFactors = F
 )
 print(redditFrame, right=F)
-
-
-
-
