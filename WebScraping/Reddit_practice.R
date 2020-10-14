@@ -56,4 +56,4 @@ redditFrame = data.frame(Title = name,                      #data frame to hold 
                          Top_Comment = comments,
                          stringsAsFactors = F
 )
-print(redditFrame, right=F)
+print(redditFrame, right=F) 
