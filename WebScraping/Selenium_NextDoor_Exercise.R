@@ -2,16 +2,19 @@ library(RSelenium)
 library(rvest)
 library(dplyr)
 
-rD = rsDriver(browser="firefox", port=4547L, verbose=F)                   #try getallcookies and inserting random ones until it works and bypasses login
+rD = rsDriver(browser="firefox", port=4546L, verbose=F)                
 remDr = rD[["client"]]
-remDr$navigate("https://nextdoor.com/login/")
+remDr$navigate("https://nextdoor.com/")
 
-email = "gderdman@fioptics.com"
-password = "Pump1kin"
+email = "bdaa.nextdoor+brute@gmail.com"
+address = "156 E 13th"
 
-remDr$findElement(using = "id", value = "id_email")$sendKeysToElement(list(email))
-remDr$findElement(using = "id", value = "id_password")$sendKeysToElement(list(password))      #logs in in to NextDoor page
-remDr$findElement(using = "id", value = "signin_button")$clickElement()
+remDr$findElement(using = "css", value = "input[class = 'select-display-block']")$sendKeysToElement(list(address))
+Sys.sleep(1)
+remDr$sendKeysToElement(list("R", key = "enter"))
+remDr$sendKeysToElement(list("R", key = "enter"))
+remDr$findElement(using = "css", value = "input[class = 'nux-signup-address-chooser-email-field fs-block']")$sendKeysToElement(list(email))
+remDr$findElement(using = "css", value = "button[class = 'css-3tna2']")$clickElement()
 Sys.sleep(5)
 
 
