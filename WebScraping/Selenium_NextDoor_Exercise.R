@@ -2,7 +2,7 @@ library(RSelenium)
 library(rvest)
 library(dplyr)
 
-rD = rsDriver(browser="firefox", port=4547L, verbose=F)                   #try getallcookies and inserting random ones until it works and bypasses login
+rD = rsDriver(browser="firefox", port=4547L, verbose=F)                
 remDr = rD[["client"]]
 remDr$navigate("https://nextdoor.com/login/")
 
