@@ -12,7 +12,6 @@ phone = "(614)267-6742"
 rD = rsDriver(browser="firefox", port=4544L, verbose=F)                
 remDr = rD[["client"]]
 remDr$navigate("https://nextdoor.com/")
-return(remDr)
 
 
 Sys.sleep(1)
