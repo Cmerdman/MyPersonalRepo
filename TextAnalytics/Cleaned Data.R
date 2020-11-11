@@ -49,10 +49,10 @@ for(i in parentFiles){                                                          
 
   while(T){
    line = readLines(con, n = 1, warn=FALSE)
-    if(length(line) == 0) next
-    if(grepl("comment_author", line)) authors <- c(authors, line)
-    if(grepl("comment_body", line)) text <- c(text, line)
-    if(grepl("comment_upvotes", line)) score <- c(score, line)
+    if(length(line) == 0) break
+    else if(grepl("comment_author", line)) authors <- c(authors, line)
+    else if(grepl("comment_body", line)) text <- c(text, line)
+    else if(grepl("comment_upvotes", line)) score <- c(score, line)
   }
 
   cleanValues = function(values){
