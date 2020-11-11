@@ -28,12 +28,19 @@ post_racistcomment[c(2,3,5)] = NULL
 
 #cleaning door dash starts
 
-doordashFiles = c(list.files(path = "Doordash"))
-y = 1
+getDataTable = function(directory){
+
+parentFiles = c(list.files(path = directory))
+if (directory == "Doordash") {
+  y = 1
+  } else {
+    y = 2 
+  }
+
 cleaned_data_list = list()
-for(i in doordashFiles){                                                                    #loops through all the files in the Doordash folder and stores them in data frames
-                                                                                            #then binds all the data frames together as one with IMO the relevant info
-  link = paste("Doordash/",doordashFiles[y], sep = "")
+for(i in parentFiles){                                                                    #loops through all the files in the Doordash folder and stores them in data frames
+                                                                                          #then binds all the data frames together as one with IMO the relevant info
+   link = paste(directory,"/",parentFiles[y], sep = "")
   
   con = file(link, open = "r")
   authors = c()
@@ -41,11 +48,11 @@ for(i in doordashFiles){                                                        
   score = c()
 
   while(T){
-   line = readLines(con, n = 1)
-   if(length(line) == 0) break
-    else if(grepl("comment_author", line)) authors <- c(authors, line)
-    else if(grepl("comment_body", line)) text <- c(text, line)
-    else if(grepl("comment_upvotes", line)) score <- c(score, line)
+   line = readLines(con, n = 1, warn=FALSE)
+    if(length(line) == 0) next
+    if(grepl("comment_author", line)) authors <- c(authors, line)
+    if(grepl("comment_body", line)) text <- c(text, line)
+    if(grepl("comment_upvotes", line)) score <- c(score, line)
   }
 
   cleanValues = function(values){
@@ -72,4 +79,21 @@ for(i in doordashFiles){                                                        
 }
 
 all_cleaned_data = do.call(rbind, cleaned_data_list)
+return(all_cleaned_data)
+}
+
+all_cleaned_Doordash = getDataTable("Doordash")
+all_cleaned_PostMates = getDataTable("PostMates")                             #cant open greps, tried skipping them
+all_cleaned_CouriersofReddit = getDataTable("CouriersofReddit")
+
+
+
+
+
+
+
+
+
+
+
 
