@@ -31,11 +31,7 @@ post_racistcomment[c(2,3,5)] = NULL
 getDataTable = function(directory){
 
 parentFiles = c(list.files(path = directory))
-if (directory == "Doordash") {
-  y = 1
-  } else {
-    y = 2 
-  }
+y = 1
 
 cleaned_data_list = list()
 for(i in parentFiles){                                                                    #loops through all the files in the Doordash folder and stores them in data frames
@@ -83,17 +79,13 @@ return(all_cleaned_data)
 }
 
 all_cleaned_Doordash = getDataTable("Doordash")
-all_cleaned_PostMates = getDataTable("PostMates")                             #cant open greps, tried skipping them
+all_cleaned_PostMates = getDataTable("PostMates")                             #can't open greps so I deleted them
 all_cleaned_CouriersofReddit = getDataTable("CouriersofReddit")
+  
 
 
-
-
-
-
-
-
-
+write.csv(all_cleaned_PostMates, "PostMates.csv")                           #if change name and file will work on nay table
+testTable = read.csv("PostMates.csv", header = T)
 
 
 
