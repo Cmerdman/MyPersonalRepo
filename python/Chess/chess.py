@@ -12,3 +12,7 @@ Needs:
 
 
 import numpy as np
+import matplotlib.pyplot as plt
+
+plt.scatter()
+plt.show()
