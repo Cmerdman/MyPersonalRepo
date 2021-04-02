@@ -2,6 +2,11 @@ library("tidyverse")
 library("readxl")
 invoices = read_xlsx("AEP/data/Invoices.xlsx")
 summary = read_xlsx("AEP/data/Summary.xlsx")
+income = read.csv("data/annualIncomeSummary.csv")
+Zip <- income[, "Zip"]
+incomeNew <- cbind(Zip, income[, 52:55])
+income <- distinct(incomeNew)
+
 
 ##### Summary Statistics #####
 
