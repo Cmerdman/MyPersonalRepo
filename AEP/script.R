@@ -1,4 +1,5 @@
 library("tidyverse")
+library("readxl")
 invoices = read_xlsx("AEP/data/Invoices.xlsx")
 summary = read_xlsx("AEP/data/Summary.xlsx")
 
@@ -28,8 +29,8 @@ length(unique(invoices[["CDSID"]]))
 df <- unique(invoices[["CDSID"]])
 m <- c()
 for(i in 1:2375){
-    dt = invoices[invoices$CDSID == df[i],]
-    m[i] <- dt[1, "Invoice_count"]
+  dt = invoices[invoices$CDSID == df[i],]
+  m[i] <- dt[1, "Invoice_count"]
 }
 e <- sapply(m, mean)
 mean(e)
