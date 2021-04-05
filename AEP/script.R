@@ -68,20 +68,22 @@ margin <- summary[, "Margin_per_invoice"]
 margin <- unlist(margin)
 plot(zipcode, margin, main = "Scatter plot by zipcode and margin", xlab = "Zip Code", ylab = "Margin of Profitability", pch = 19)
 zip_uni = unique(zipcode)
-zips <-c()
 means <- c()
+nums <- c()
 for(x in 1:407){
   zips <-c()
+  y = 0
   for(i in 1:2375){
     temp = zipcode[i:i,1:1]
     if(zip_uni[x:x, 1:1] == temp){
       zips <- c(zips, margin[i:i])
+      y = y+1
     }
   }
-  means<- c(means, setNames(mean(as.numeric(zips)), temp))
-  #each label is the same zip, idk why
+  nums <- c(nums, y)
+  means<- c(means, mean(as.numeric(zips)))
 }
-
+marginByZip = data.frame(zip_uni, means, nums, stringsAsFactors = F)
 
 
 
