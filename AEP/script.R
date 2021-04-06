@@ -84,7 +84,6 @@ for(x in 1:407){
   means<- c(means, mean(as.numeric(zips)))
 }
 marginByZip = data.frame(zip_uni, means, nums, stringsAsFactors = F)
-write.csv(marginByZip, 'data/marginByZip')
 
 
 
