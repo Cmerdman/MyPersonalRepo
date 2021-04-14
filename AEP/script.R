@@ -70,7 +70,7 @@ plot(zipcode, margin, main = "Scatter plot by zipcode and margin", xlab = "Zip C
 zip_uni = unique(zipcode)
 means <- c()
 nums <- c()
-for(x in 1:407){
+for(x in 1:542){
   zips <-c()
   y = 0
   for(i in 1:2375){
@@ -84,6 +84,7 @@ for(x in 1:407){
   means<- c(means, mean(as.numeric(zips)))
 }
 marginByZip = data.frame(zip_uni, means, nums, stringsAsFactors = F)
+write_csv(marginByZip, file = "data/marginByZip.csv")
 
 
 
