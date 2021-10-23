@@ -1,0 +1,17 @@
+---
+title: "Data IO"
+author: "Cameron Erdman"
+date: "10/23/2021"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+
+```
+
+
+```{r}
+
+
+```
